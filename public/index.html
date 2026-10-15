@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Calto Tech | Meus periféricos, testados</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="barra-topo" aria-label="Topo">
+    <div class="barra-topo-dentro">
+      <a class="assinatura" href="index.html"><span class="logo" aria-hidden="true"></span>Calto Tech</a>
+      <div class="topo-links">
+        <a class="insta" href="https://www.instagram.com/duda.calto/" target="_blank" rel="noopener noreferrer" aria-label="Meu Instagram, @duda.calto">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor"/></svg>
+          <span>@duda.calto</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="topo">
+    <div class="emblema" aria-hidden="true"></div>
+    <h1>Meus periféricos, <em>testados</em></h1>
+    <p class="sub">Mouses, teclados, headsets e webcams que já usei no meu setup, com ficha técnica e minha opinião.</p>
+    <ul id="resumo" class="resumo" aria-label="Resumo"></ul>
+  </header>
+
+  <main>
+    <!-- Fotos do setup: ficam em public/img/ -->
+    <section class="setup" aria-labelledby="setup-titulo">
+      <div class="setup-texto">
+        <p class="marca">Meu setup</p>
+        <h2 id="setup-titulo">Onde tudo é testado</h2>
+      </div>
+      <div class="setup-fotos">
+        <a class="foto setup-foto" href="img/setup.jpeg" target="_blank" rel="noopener">
+          <img src="img/setup.jpeg" alt="Meu setup branco: monitor ultrawide com moldura de arabescos, teclado Gravastar e mouse branco">
+        </a>
+        <a class="foto setup-foto" href="img/setup2.jpeg" target="_blank" rel="noopener">
+          <img src="img/setup2.jpeg" alt="Meu setup visto de frente, com o monitor vertical ao lado do ultrawide">
+        </a>
+      </div>
+    </section>
+
+    <section class="controles" aria-label="Filtros">
+      <div id="filtros-categoria" class="chips" role="group" aria-label="Categoria"></div>
+      <label class="toggle">
+        <input type="checkbox" id="so-review">
+        <span>Só os que eu avaliei</span>
+      </label>
+    </section>
+
+    <p id="status" class="status" role="status"></p>
+    <section id="lista" class="grade"></section>
+  </main>
+
+  <footer class="rodape-site">Calto Tech</footer>
+
+  <div id="barra" class="barra" hidden>
+    <span id="barra-texto"></span>
+    <button type="button" id="limpar" class="chip">Limpar</button>
+    <a id="barra-link" class="botao" href="comparar.html" hidden>Comparar</a>
+  </div>
+
+  <script src="comum.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
