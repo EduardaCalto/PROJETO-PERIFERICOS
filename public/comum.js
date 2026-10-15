@@ -38,10 +38,6 @@ function formatarValor(valor, unidade) {
   return `${valor}${unidade}`;
 }
 
-function formatarPreco(preco) {
-  return `R$ ${Number(preco).toFixed(2).replace('.', ',')}`;
-}
-
 // Só aceita links http(s)
 function urlSegura(url) {
   return typeof url === 'string' && /^https?:\/\//i.test(url);

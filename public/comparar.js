@@ -110,20 +110,10 @@ function montarTabela(produtos) {
     tbody.appendChild(criarLinha(rotulo, celulas, diferem(valores)));
   });
 
-  // Nota e preço (também participam do filtro de diferenças)
+  // Nota (também participa do filtro de diferenças)
   const notas = produtos.map((p) => p.nota);
   if (notas.some(temValor)) {
     tbody.appendChild(criarLinha('Minha nota', notas.map((n) => celulaTexto(n, '/10')), diferem(notas)));
-  }
-  const precos = produtos.map((p) => p.preco);
-  if (precos.some(temValor)) {
-    tbody.appendChild(criarLinha('Preço de referência',
-      precos.map((v) => {
-        const td = criar('td');
-        if (temValor(v)) td.textContent = formatarPreco(v);
-        else { td.textContent = 'Não informado'; td.classList.add('vazio'); }
-        return td;
-      }), diferem(precos)));
   }
 
   // Parte autoral: sempre visível

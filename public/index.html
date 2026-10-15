@@ -24,8 +24,8 @@
 
   <header class="topo">
     <div class="emblema" aria-hidden="true"></div>
-    <h1>Meus periféricos, <em>testados</em></h1>
-    <p class="sub">Mouses, teclados, headsets e webcams que já usei no meu setup, com ficha técnica e minha opinião.</p>
+    <h1>Minha experiência, <em>sua escolha.</em></h1>
+    <p class="sub">Descubra os periféricos que fazem parte do meu setup, com especificações, avaliações pessoais e detalhes de cada produto.</p>
     <ul id="resumo" class="resumo" aria-label="Resumo"></ul>
   </header>
 
@@ -36,13 +36,23 @@
         <p class="marca">Meu setup</p>
         <h2 id="setup-titulo">Onde tudo é testado</h2>
       </div>
-      <div class="setup-fotos">
-        <a class="foto setup-foto" href="img/setup.jpeg" target="_blank" rel="noopener">
-          <img src="img/setup.jpeg" alt="Meu setup branco: monitor ultrawide com moldura de arabescos, teclado Gravastar e mouse branco">
-        </a>
-        <a class="foto setup-foto" href="img/setup2.jpeg" target="_blank" rel="noopener">
-          <img src="img/setup2.jpeg" alt="Meu setup visto de frente, com o monitor vertical ao lado do ultrawide">
-        </a>
+      <!-- Carrossel: para incluir uma foto, copie um <a class="foto setup-foto"> dentro da trilha -->
+      <div class="carrossel" aria-roledescription="carrossel" aria-label="Fotos do meu setup">
+        <div class="carrossel-trilha" tabindex="0">
+          <a class="foto setup-foto" href="img/setup.jpeg" target="_blank" rel="noopener">
+            <img src="img/setup.jpeg" alt="Meu setup branco: monitor ultrawide com moldura de arabescos, teclado Gravastar e mouse branco">
+          </a>
+          <a class="foto setup-foto" href="img/setup2.jpeg" target="_blank" rel="noopener">
+            <img src="img/setup2.jpeg" alt="Meu setup visto de frente, com o monitor vertical ao lado do ultrawide">
+          </a>
+        </div>
+        <button class="carrossel-seta anterior" type="button" aria-label="Foto anterior">
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M15 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="carrossel-seta proxima" type="button" aria-label="Próxima foto">
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="carrossel-pontos"></div>
       </div>
     </section>
 

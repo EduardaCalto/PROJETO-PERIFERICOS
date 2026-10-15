@@ -90,8 +90,8 @@ main { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
 }
 /* Logo: as asas brancas, com sombra lilás para destacar no fundo claro */
 .logo {
-  width: 64px;
-  aspect-ratio: 440 / 130;
+  width: 36px;
+  aspect-ratio: 720 / 395;
   margin-left: 8px;
   background: url("asas.svg") center / contain no-repeat;
   filter: drop-shadow(0 2px 3px rgba(107, 80, 179, 0.5));
@@ -151,8 +151,8 @@ main { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
 
 /* Emblema: asas de anjo brancas acima do título */
 .emblema {
-  width: min(520px, 92%);
-  aspect-ratio: 440 / 130;
+  width: min(280px, 60%);
+  aspect-ratio: 720 / 395;
   margin: 0 auto 6px;
   background: url("asas.svg") center / contain no-repeat;
   filter: drop-shadow(0 16px 22px rgba(107, 80, 179, 0.24));
@@ -208,7 +208,7 @@ main { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
 
 /* Versão menor (página de comparação) */
 .topo.compacto { padding: 48px 20px 36px; }
-.topo.compacto .emblema { width: min(340px, 80%); margin-bottom: 18px; }
+.topo.compacto .emblema { width: min(190px, 55%); margin-bottom: 18px; }
 .topo.compacto::before { width: min(640px, 150%); }
 
 @keyframes asas-entrada {
@@ -233,8 +233,63 @@ main { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
   border-radius: 32px;
   box-shadow: var(--sombra);
 }
-.setup-fotos { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+/* Carrossel: uma foto por vez, arrasta no celular e usa as setas no computador */
+.carrossel { position: relative; }
+.carrossel-trilha {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  border-radius: 22px;
+  scrollbar-width: none;
+}
+.carrossel-trilha::-webkit-scrollbar { display: none; }
+.carrossel-trilha .setup-foto { flex: 0 0 100%; scroll-snap-align: center; }
 .setup-foto { border-radius: 22px; }
+.carrossel-seta {
+  position: absolute;
+  top: 50%;
+  translate: 0 -50%;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--lilas-escuro);
+  box-shadow: var(--sombra);
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, opacity 0.2s ease;
+}
+.carrossel-seta:hover { background: var(--lilas-escuro); color: #fff; }
+.carrossel-seta:disabled { opacity: 0; pointer-events: none; }
+.carrossel-seta.anterior { left: 14px; }
+.carrossel-seta.proxima { right: 14px; }
+.carrossel-pontos {
+  position: absolute;
+  left: 50%;
+  bottom: 14px;
+  translate: -50% 0;
+  display: flex;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(31, 27, 46, 0.35);
+}
+.carrossel-pontos button {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  transition: width 0.2s ease, background 0.2s ease;
+}
+.carrossel-pontos button[aria-current="true"] { width: 22px; background: #fff; }
+.carrossel[data-unica] .carrossel-seta,
+.carrossel[data-unica] .carrossel-pontos { display: none; }
 /* As fotos são verticais: corta um pouco da parede para focar na mesa */
 .foto.setup-foto img {
   position: absolute;
@@ -332,8 +387,8 @@ main { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
 /* Sem foto: asas no centro e moldura tracejada indicando o espaço da imagem */
 .foto.sem-foto::before {
   content: "";
-  width: 56%;
-  aspect-ratio: 440 / 130;
+  width: 34%;
+  aspect-ratio: 720 / 395;
   background: url("asas.svg") center / contain no-repeat;
   filter: drop-shadow(0 8px 12px rgba(107, 80, 179, 0.2));
 }
@@ -448,7 +503,6 @@ main { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
 .specs dd { margin: 0; font-weight: 500; text-align: right; }
 
 .rodape { margin-top: auto; display: flex; justify-content: space-between; align-items: center; gap: 12px; padding-top: 4px; }
-.rodape .preco { color: var(--tinta-suave); font-weight: 400; }
 
 .ver-review {
   margin-left: auto;
@@ -553,8 +607,8 @@ main { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
   position: absolute;
   left: 50%;
   top: -44px;
-  width: 200px;
-  aspect-ratio: 440 / 130;
+  width: 110px;
+  aspect-ratio: 720 / 395;
   translate: -50% 0;
   background: url("asas.svg") center / contain no-repeat;
   filter: drop-shadow(0 8px 12px rgba(107, 80, 179, 0.25));
@@ -583,11 +637,6 @@ main { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
 .review-secao ul { margin: 0; padding-left: 22px; display: grid; gap: 6px; }
 .review-secao li::marker { color: var(--lilas); }
 
-.criterios { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 30px; }
-.criterio { padding: 18px; border: 1px solid var(--linha); border-radius: 20px; background: #faf9fd; }
-.criterio .icone { display: inline-flex; color: var(--lilas-escuro); }
-.criterio h3 { margin: 8px 0 4px; font-family: var(--fonte-titulo); font-weight: 600; font-size: 1.3rem; }
-.criterio p { margin: 0; color: var(--tinta-suave); font-size: 0.95rem; }
 
 .veredito {
   margin-top: 30px;
@@ -614,8 +663,8 @@ main { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
 .rodape-site::before {
   content: "";
   display: block;
-  width: 84px;
-  aspect-ratio: 440 / 130;
+  width: 46px;
+  aspect-ratio: 720 / 395;
   margin: 0 auto 8px;
   background: url("asas.svg") center / contain no-repeat;
   filter: drop-shadow(0 4px 6px rgba(107, 80, 179, 0.3));
@@ -627,7 +676,7 @@ main { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
   .review-cab { grid-template-columns: 1fr; gap: 22px; }
   .review-foto { max-width: 320px; }
   .setup { grid-template-columns: 1fr; gap: 20px; padding: 26px 12px 12px; border-radius: 28px; }
-  .setup-fotos { gap: 8px; }
+  .carrossel-seta { width: 38px; height: 38px; }
   .foto.setup-foto { aspect-ratio: 3 / 4; border-radius: 18px; }
   .setup-texto { padding: 0 12px; }
 }
@@ -644,13 +693,14 @@ main { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
   .emblema { margin-bottom: 4px; }
   .grade { gap: 18px; }
   .review { padding: 22px; border-radius: 26px; }
-  .review::before { width: 160px; top: -36px; }
+  .review::before { width: 90px; top: -36px; }
 }
 
 /* ---------- Movimento reduzido ---------- */
 @media (prefers-reduced-motion: reduce) {
   .emblema { animation: none; }
-  .card, .chip, .card .foto img, .ver-review, .insta, .foto.setup-foto img { transition: none; }
+  .card, .chip, .card .foto img, .ver-review, .insta, .foto.setup-foto img, .carrossel-seta, .carrossel-pontos button { transition: none; }
+  .carrossel-trilha { scroll-behavior: auto; }
   .foto.setup-foto:hover img { transform: none; }
   .card:hover { transform: none; }
   .card:hover .foto img { transform: none; }

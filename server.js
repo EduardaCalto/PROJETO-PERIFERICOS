@@ -5,7 +5,28 @@ const Produto = require('./models/Produto');
 
 const app = express();
 app.use(express.json());
-app.use(express.static('public')); // front-end (HTML/CSS/JS)
+app.use(express.static('public')); // front-end (HTML/CSS/JS); na Vercel a pasta public é servida direto
+
+// Conecta no MongoDB uma vez e reaproveita a conexão (na Vercel cada função pode reiniciar)
+let conexao;
+function conectar() {
+  if (!conexao) {
+    conexao = mongoose.connect(process.env.MONGODB_URI).catch((err) => {
+      conexao = null;
+      throw err;
+    });
+  }
+  return conexao;
+}
+app.use('/api', async (req, res, next) => {
+  try {
+    await conectar();
+    next();
+  } catch (err) {
+    console.error('Erro ao conectar no MongoDB:', err.message);
+    res.status(500).json({ erro: 'Banco de dados indisponível' });
+  }
+});
 
 // Lista produtos, com filtro opcional: /api/produtos?categoria=mouse
 app.get('/api/produtos', async (req, res) => {
@@ -45,11 +66,15 @@ app.get('/api/produtos/:id', async (req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 3000;
+// Na Vercel o app é exportado; no computador (npm start) ele sobe um servidor normal
+module.exports = app;
 
-mongoose.connect(process.env.MONGODB_URI)
-  .then(() => {
-    console.log('MongoDB conectado');
-    app.listen(PORT, () => console.log(`Servidor em http://localhost:${PORT}`));
-  })
-  .catch((err) => console.error('Erro ao conectar no MongoDB:', err.message));
+if (require.main === module) {
+  const PORT = process.env.PORT || 3000;
+  conectar()
+    .then(() => {
+      console.log('MongoDB conectado');
+      app.listen(PORT, () => console.log(`Servidor em http://localhost:${PORT}`));
+    })
+    .catch((err) => console.error('Erro ao conectar no MongoDB:', err.message));
+}

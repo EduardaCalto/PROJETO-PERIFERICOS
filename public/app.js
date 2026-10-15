@@ -38,6 +38,45 @@ document.querySelectorAll('.setup-foto').forEach((foto) => {
   else img.addEventListener('error', semFoto);
 });
 
+// Carrossel do setup: setas, pontinhos, teclado (← →) e arrastar no celular
+function iniciarCarrossel(carrossel) {
+  const trilha = carrossel.querySelector('.carrossel-trilha');
+  const fotos = [...trilha.children];
+  const anterior = carrossel.querySelector('.anterior');
+  const proxima = carrossel.querySelector('.proxima');
+  const elPontos = carrossel.querySelector('.carrossel-pontos');
+  if (fotos.length < 2) { carrossel.dataset.unica = ''; return; }
+
+  const irPara = (i) => trilha.scrollTo({ left: i * trilha.clientWidth });
+  const atual = () => Math.round(trilha.scrollLeft / trilha.clientWidth);
+
+  const pontos = fotos.map((_, i) => {
+    const b = criar('button');
+    b.type = 'button';
+    b.setAttribute('aria-label', `Foto ${i + 1} de ${fotos.length}`);
+    b.addEventListener('click', () => irPara(i));
+    elPontos.appendChild(b);
+    return b;
+  });
+
+  const atualizar = () => {
+    const i = atual();
+    pontos.forEach((b, j) => b.setAttribute('aria-current', String(i === j)));
+    anterior.disabled = i === 0;
+    proxima.disabled = i === fotos.length - 1;
+  };
+
+  anterior.addEventListener('click', () => irPara(atual() - 1));
+  proxima.addEventListener('click', () => irPara(atual() + 1));
+  trilha.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') { e.preventDefault(); irPara(atual() - 1); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); irPara(atual() + 1); }
+  });
+  trilha.addEventListener('scroll', atualizar, { passive: true });
+  atualizar();
+}
+document.querySelectorAll('.carrossel').forEach(iniciarCarrossel);
+
 // Números do topo: total, avaliados e categorias
 function renderizarResumo() {
   const avaliados = estado.produtos.filter((p) => p.temReview).length;
@@ -102,7 +141,6 @@ function criarCard(p) {
   corpo.appendChild(lista);
 
   const rodape = criar('div', 'rodape');
-  if (temValor(p.preco)) rodape.appendChild(criar('span', 'preco', formatarPreco(p.preco)));
   const ver = criar('a', 'ver-review', p.temReview ? 'Ler review' : 'Ver ficha');
   ver.href = `review.html?id=${encodeURIComponent(p._id)}`;
   rodape.appendChild(ver);

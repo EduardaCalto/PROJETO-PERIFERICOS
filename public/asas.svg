@@ -1,22 +1,28 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 130">
-  <!-- Asas de anjo brancas. A asa esquerda é desenhada uma vez e espelhada. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="175 585 720 395">
+  <!-- Asas de anjo em traço fino com estrela no centro (baseado no desenho de exemplo).
+       A asa esquerda é desenhada uma vez e espelhada no centro (x = 535). -->
   <defs>
-    <linearGradient id="pena" x1="1" y1="0.3" x2="0" y2="0.7">
-      <stop offset="0" stop-color="#f3f0fa"/>
-      <stop offset="0.45" stop-color="#ffffff"/>
-      <stop offset="1" stop-color="#ffffff"/>
-    </linearGradient>
-    <g id="asa" stroke="#cfc6e2" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round">
-      <!-- contorno: borda de cima lisa, borda de baixo com as pontas das penas -->
-      <path fill="url(#pena)" d="M210 52C186 12 104 -4 1 5Q22 17 30 40Q30.9 57.1 48 58Q51.8 75.9 70 74Q75.7 91.8 94 88Q102.5 104.7 120 98Q131.3 113.6 148 104Q162.9 115.6 176 102Q193.4 106.8 200 90Q212 74 210 52Z"/>
-      <!-- fileira de penas menores (coberteiras) -->
-      <path fill="none" d="M70 28Q76.6 46.4 96 44Q104.4 62.2 124 58Q134.8 73.2 152 66Q165.2 78.2 180 68Q194.4 74.6 204 62"/>
-      <!-- fileira próxima da borda de cima -->
-      <path fill="none" opacity="0.8" d="M128 14Q131 26 146 26Q151 36 166 34Q172 43 186 40Q194 46 204 42"/>
-      <!-- divisões entre as penas longas -->
-      <path fill="none" opacity="0.75" d="M30 40L66 41M48 58L86 56M70 74L104 67M94 88L124 76M120 98L144 84M148 104L164 89M176 102L186 86"/>
+    <g id="asa">
+      <!-- preenchimento branco da asa -->
+      <path fill="#fff" d="M188 598C250 680 330 720 405 752C455 775 485 815 492 868C470 880 440 888 420 888C395 892 376 890 370 878C350 880 330 872 318 852C300 846 288 825 282 797C255 790 236 748 233 703C210 670 192 630 188 598Z"/>
+      <g fill="none" stroke="#8f78c8" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+        <!-- borda de cima até o centro -->
+        <path d="M188 598C250 680 330 720 405 752C455 775 485 815 492 868"/>
+        <!-- borda de fora da pena maior -->
+        <path d="M188 598C192 630 210 670 233 703"/>
+        <!-- penas em camadas -->
+        <path d="M233 703C240 760 275 790 330 800"/>
+        <path d="M272 688C256 722 276 762 322 772"/>
+        <path d="M282 797C290 830 315 850 360 855"/>
+        <path d="M318 772C310 800 326 820 380 822"/>
+        <path d="M318 850C330 870 350 880 390 875"/>
+        <path d="M356 824C350 840 362 851 397 850"/>
+        <path d="M370 878C376 890 395 892 420 888"/>
+      </g>
     </g>
   </defs>
   <use href="#asa"/>
-  <use href="#asa" transform="translate(440 0) scale(-1 1)"/>
+  <use href="#asa" transform="translate(1070 0) scale(-1 1)"/>
+  <!-- estrela de quatro pontas -->
+  <path fill="#8f78c8" d="M535 815Q539 879 580 885Q539 891 535 965Q531 891 490 885Q531 879 535 815Z"/>
 </svg>

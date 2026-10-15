@@ -62,7 +62,7 @@ const produtos = [
     formato: 'Full Size',
     layout: 'ABNT2',
     tipoSwitch: 'Óptico',
-    hotswap: null,
+    hotswap: true,
     conexao: 'USB com fio',
     rgb: true,
     pesoGramas: 1077
@@ -70,21 +70,24 @@ const produtos = [
 
   base('Superframe Ribbon RGB 75%', 'Superframe', 'teclado', {
     formato: '75%',
-    layout: '',
-    tipoSwitch: '',
-    hotswap: null,
-    conexao: '',
-    rgb: true
-  }, ''),
+    layout: 'ANSI',
+    tipoSwitch: 'Linear Red',
+    hotswap: true,
+    conexao: 'USB-C / Bluetooth / 2.4 GHz',
+    rgb: true,
+    bateriaMah: 2000
+  }, 'https://www.terabyteshop.com.br/produto/25526/teclado-gamer-superframe-ribbon-wireless-rgb-switch-red-75-abnt2-hot-swap-blackgrey'),
 
   base('Royal Kludge 75%', 'Royal Kludge', 'teclado', {
     formato: '75%',
-    layout: '',
-    tipoSwitch: '',
-    hotswap: null,
-    conexao: '',
-    rgb: null
-  }, ''),
+    layout: 'US QWERTY',
+    tipoSwitch: 'Linear Cream',
+    hotswap: true,
+    conexao: 'USB / Bluetooth / 2.4 GHz',
+    rgb: true,
+    bateriaMah: 4000,
+    pesoGramas: 680
+  }, 'https://rkgamingstore.com/products/r75-75-wireless-gaming-keyboard'),
 
   base('Gravastar K1 Lite', 'Gravastar', 'teclado', {
     formato: '75%',
@@ -98,8 +101,8 @@ const produtos = [
   }, 'https://www.gravastar.com/products/mercury-k1-lite-transparent-black'),
 
   base('Rapoo E9050L', 'Rapoo', 'teclado', {
-    formato: 'Compacto',
-    layout: '78 teclas',
+    formato: 'Compacto (78 teclas)',
+    layout: '',
     tipoSwitch: 'Tesoura',
     hotswap: null,
     conexao: 'USB / Bluetooth 4.0 / Bluetooth 5.0 / 2.4 GHz',
@@ -114,8 +117,8 @@ const produtos = [
     microfone: true,
     driverMm: 32,
     surround: null,
-    pesoGramas: 250
-  }, ''),
+    pesoGramas: 246
+  }, 'https://www.logitechg.com/en-sg/products/gaming-audio/a10-gen-2.html'),
 
   base('HyperX Cloud Stinger', 'HyperX', 'headset', {
     conexao: 'P2 3,5 mm',
@@ -129,20 +132,24 @@ const produtos = [
     conexao: 'USB Tipo-A com fio',
     microfone: true,
     driverMm: 50,
-    surround: null,
+    surround: true,
     pesoGramas: 390
-  }, ''),
+  }, 'https://fifinemicrophone.com/products/fifine-ampligame-h13-headset'),
 
   // Webcam
   base('Logitech Brio 100', 'Logitech', 'webcam', {
     resolucao: '1920x1080 (Full HD)',
     fpsMax: 30,
-    conexao: 'USB'
+    campoVisaoGraus: 58,
+    microfone: true,
+    conexao: 'USB-A'
   }, 'https://www.logitech.com/pt-br/shop/p/brio-100-webcam'),
 
   base('eMeet S600L', 'eMeet', 'webcam', {
-    resolucao: '3840x2160 (4K)',
+    resolucao: '3840x2160 (4K a 30 fps; 60 fps em 1080p)',
     fpsMax: 60,
+    campoVisaoGraus: 73,
+    microfone: true,
     conexao: 'USB-C'
   }, 'https://emeet.com/pt-br/products/emeet-smartcam-s600l'),
 
