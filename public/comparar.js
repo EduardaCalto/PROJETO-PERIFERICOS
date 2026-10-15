@@ -6,7 +6,7 @@ const MELHOR = {
   fpsMax: 'max',
   pesoGramas: 'min'
 };
-// Peso só entra como critério onde "mais leve" é vantagem
+// Peso "mais leve" é vantagem
 const PESO_VALE_EM = ['mouse', 'headset'];
 
 const elStatus = document.getElementById('status');
@@ -93,7 +93,7 @@ function montarTabela(produtos) {
 
   const tbody = document.createElement('tbody');
 
-  // Fichas técnicas: só campos que algum produto preencheu
+  // Fichas técnicas
   Object.entries(CAMPOS).forEach(([chave, [rotulo, unidade]]) => {
     const valores = produtos.map((p) => (p.specs || {})[chave]);
     if (!valores.some(temValor)) return;
@@ -110,13 +110,13 @@ function montarTabela(produtos) {
     tbody.appendChild(criarLinha(rotulo, celulas, diferem(valores)));
   });
 
-  // Nota (também participa do filtro de diferenças)
+  // Nota 
   const notas = produtos.map((p) => p.nota);
   if (notas.some(temValor)) {
     tbody.appendChild(criarLinha('Minha nota', notas.map((n) => celulaTexto(n, '/10')), diferem(notas)));
   }
 
-  // Parte autoral: sempre visível
+
   const trReview = criarLinha('Minha opinião', produtos.map((p) => {
     const td = criar('td', 'texto-longo');
     if (p.temReview && temValor(p.review)) td.textContent = p.review;
@@ -150,7 +150,7 @@ async function carregar() {
     if (!resposta.ok) throw new Error('Resposta inválida');
     const recebidos = await resposta.json();
 
-    // Mantém a ordem em que você escolheu
+    
     const produtos = ids.map((id) => recebidos.find((p) => p._id === id)).filter(Boolean);
     if (produtos.length < 2) {
       mostrarErro('Não encontrei esses produtos. Volte para a lista e escolha de novo.');

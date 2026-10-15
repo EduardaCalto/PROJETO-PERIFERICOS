@@ -1,18 +1,14 @@
-/* ==========================================================
-   Calto Tech · estética angelical
-   Branco perolado, asas de anjo e toques de lilás
-   ========================================================== */
 
 :root {
   --fundo: #f8f7fc;
   --branco: #ffffff;
-  --tinta: #1f1b2e;          /* texto principal */
-  --tinta-suave: #666175;    /* textos secundários */
+  --tinta: #1f1b2e;         
+  --tinta-suave: #666175;    
   --linha: #ebe7f3;
   --lavanda: #f1ecfc;
   --lavanda-forte: #d9cdf5;
   --lilas: #a78bda;
-  --lilas-escuro: #6b50b3;   /* links e botões (contraste AA no branco) */
+  --lilas-escuro: #6b50b3;   
 
   --sombra: 0 1px 2px rgba(31, 27, 46, 0.04), 0 18px 40px -26px rgba(107, 80, 179, 0.4);
   --sombra-alta: 0 1px 2px rgba(31, 27, 46, 0.05), 0 32px 60px -30px rgba(107, 80, 179, 0.5);
@@ -36,7 +32,7 @@ body {
   background: var(--fundo);
 }
 
-/* Céu perolado: brilhos suaves no fundo */
+
 body::before {
   content: "";
   position: fixed;
@@ -54,7 +50,7 @@ main { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
 
 :focus-visible { outline: 3px solid var(--lilas-escuro); outline-offset: 3px; border-radius: 8px; }
 
-/* ---------- Barra do topo (fixa, de vidro) ---------- */
+
 .barra-topo {
   position: sticky;
   top: 12px;
@@ -88,7 +84,7 @@ main { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
   font-size: 1.45rem;
   letter-spacing: 0.01em;
 }
-/* Logo: as asas brancas, com sombra lilás para destacar no fundo claro */
+
 .logo {
   width: 36px;
   aspect-ratio: 720 / 395;
@@ -108,7 +104,7 @@ main { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
 
 .topo-links { display: flex; align-items: center; gap: 18px; }
 
-/* Botão do Instagram */
+
 .insta {
   display: inline-flex;
   align-items: center;
@@ -124,7 +120,7 @@ main { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
 }
 .insta:hover { background: var(--lilas-escuro); color: #fff; }
 
-/* ---------- Topo / hero ---------- */
+
 .topo {
   position: relative;
   isolation: isolate;
@@ -132,10 +128,10 @@ main { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
   margin: 0 auto;
   padding: 72px 20px 52px;
   text-align: center;
-  overflow-x: clip; /* asas grandes não geram rolagem lateral no celular */
+  overflow-x: clip; 
 }
 
-/* Brilho suave atrás do emblema e do título */
+
 .topo::before {
   content: "";
   position: absolute;
@@ -149,7 +145,7 @@ main { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
   pointer-events: none;
 }
 
-/* Emblema: asas de anjo brancas acima do título */
+
 .emblema {
   width: min(280px, 60%);
   aspect-ratio: 720 / 395;
@@ -178,7 +174,7 @@ main { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
   font-weight: 300;
 }
 
-/* Números rápidos do acervo */
+
 .resumo {
   display: flex;
   flex-wrap: wrap;
@@ -206,7 +202,7 @@ main { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
   font-weight: 600;
 }
 
-/* Versão menor (página de comparação) */
+
 .topo.compacto { padding: 48px 20px 36px; }
 .topo.compacto .emblema { width: min(190px, 55%); margin-bottom: 18px; }
 .topo.compacto::before { width: min(640px, 150%); }
@@ -220,7 +216,7 @@ main { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
   to   { transform: translateY(-8px); }
 }
 
-/* ---------- Meu setup ---------- */
+
 .setup {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
@@ -290,7 +286,6 @@ main { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
 .carrossel-pontos button[aria-current="true"] { width: 22px; background: #fff; }
 .carrossel[data-unica] .carrossel-seta,
 .carrossel[data-unica] .carrossel-pontos { display: none; }
-/* As fotos são verticais: corta um pouco da parede para focar na mesa */
 .foto.setup-foto img {
   position: absolute;
   inset: 0;
@@ -311,7 +306,7 @@ main { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
 .setup-texto p:last-child { margin: 0; color: var(--tinta-suave); font-weight: 300; font-size: 1.05rem; }
 .setup-texto .marca { margin: 0; }
 
-/* ---------- Filtros ---------- */
+
 .controles {
   display: flex;
   flex-wrap: wrap;
@@ -355,7 +350,7 @@ main { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
 .status { margin: 22px 0 0; color: var(--tinta-suave); text-align: center; }
 .status.erro { color: #a3283f; font-weight: 500; }
 
-/* ---------- Espaço da foto (usado nos cards, na comparação e no review) ---------- */
+
 [data-cat="mouse"]   { --capa: linear-gradient(160deg, #e3e9fc, #ece4fb); }
 [data-cat="teclado"] { --capa: linear-gradient(160deg, #f5e6f6, #e8defb); }
 [data-cat="headset"] { --capa: linear-gradient(160deg, #eceef5, #e0d8f5); }
@@ -380,11 +375,11 @@ main { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
   padding: 8%;
   filter: drop-shadow(0 14px 18px rgba(31, 27, 46, 0.14));
 }
-/* Com foto: as imagens dos produtos têm fundo branco, então o espaço fica branco também */
+
 .foto.com-foto { background: var(--branco); box-shadow: inset 0 0 0 1px var(--linha); }
 .foto.com-foto img { position: absolute; inset: 0; padding: 6%; filter: none; }
 
-/* Sem foto: asas no centro e moldura tracejada indicando o espaço da imagem */
+
 .foto.sem-foto::before {
   content: "";
   width: 34%;
@@ -412,7 +407,7 @@ main { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
   text-transform: uppercase;
 }
 
-/* ---------- Cards de produto ---------- */
+
 .grade {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -435,7 +430,7 @@ main { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
 .card .foto img { transition: transform 0.4s ease; }
 .card:hover .foto img { transform: scale(1.04); }
 
-/* Etiquetas sobre a foto */
+
 .tag {
   position: absolute;
   z-index: 1;
@@ -523,7 +518,7 @@ main { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
 .comparar input:disabled { cursor: not-allowed; }
 .comparar:has(input:disabled) { color: var(--tinta-suave); cursor: not-allowed; }
 
-/* ---------- Barra de comparação ---------- */
+
 .barra {
   position: fixed;
   left: 50%;
@@ -557,7 +552,7 @@ main { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
 }
 .botao[hidden] { display: none; }
 
-/* ---------- Página de comparação ---------- */
+
 .legenda { margin: 0; color: var(--tinta-suave); font-size: 0.9rem; font-weight: 300; max-width: 60ch; }
 
 .tabela-wrap { overflow-x: auto; padding: 24px 0 96px; }
@@ -590,7 +585,7 @@ main { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
 .tabela td.melhor { background: #f4effd; }
 .etiqueta { margin-left: 8px; padding: 1px 10px; border-radius: 999px; background: var(--lilas-escuro); color: #fff; font-size: 0.75rem; font-weight: 500; }
 
-/* ---------- Página de review ---------- */
+
 .review {
   position: relative;
   max-width: 820px;
@@ -601,7 +596,7 @@ main { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
   border-radius: 32px;
   box-shadow: var(--sombra-alta);
 }
-/* Asinhas "pousadas" em cima do card */
+
 .review::before {
   content: "";
   position: absolute;
@@ -652,7 +647,7 @@ main { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
 .review-acoes { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 20px; margin-top: 30px; }
 .review-acoes .ver-review { margin-left: 0; }
 
-/* ---------- Rodapé ---------- */
+
 .rodape-site {
   padding: 32px 20px 96px;
   text-align: center;
@@ -670,7 +665,7 @@ main { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
   filter: drop-shadow(0 4px 6px rgba(107, 80, 179, 0.3));
 }
 
-/* ---------- Responsivo ---------- */
+
 @media (max-width: 720px) {
   .controles { border-radius: 24px; }
   .review-cab { grid-template-columns: 1fr; gap: 22px; }
@@ -696,7 +691,7 @@ main { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
   .review::before { width: 90px; top: -36px; }
 }
 
-/* ---------- Movimento reduzido ---------- */
+
 @media (prefers-reduced-motion: reduce) {
   .emblema { animation: none; }
   .card, .chip, .card .foto img, .ver-review, .insta, .foto.setup-foto img, .carrossel-seta, .carrossel-pontos button { transition: none; }

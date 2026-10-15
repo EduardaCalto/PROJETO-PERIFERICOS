@@ -28,7 +28,7 @@ app.use('/api', async (req, res, next) => {
   }
 });
 
-// Lista produtos, com filtro opcional: /api/produtos?categoria=mouse
+// Lista produtos, com filtro opcional
 app.get('/api/produtos', async (req, res) => {
   try {
     const filtro = {};
@@ -40,8 +40,7 @@ app.get('/api/produtos', async (req, res) => {
   }
 });
 
-// Compara 2 ou 3 produtos: /api/comparar?ids=ID1,ID2,ID3
-// (declarada antes de /:id para não ser confundida com ele)
+// Compara 2 ou 3 produtos
 app.get('/api/produtos/comparar', async (req, res) => {
   try {
     const ids = (req.query.ids || '').split(',').filter(Boolean);
@@ -55,7 +54,7 @@ app.get('/api/produtos/comparar', async (req, res) => {
   }
 });
 
-// Um produto específico (usado na página de review)
+// Um produto específico 
 app.get('/api/produtos/:id', async (req, res) => {
   try {
     const produto = await Produto.findById(req.params.id);
@@ -65,9 +64,6 @@ app.get('/api/produtos/:id', async (req, res) => {
     res.status(400).json({ erro: 'Id inválido' });
   }
 });
-
-// Na Vercel o app é exportado; no computador (npm start) ele sobe um servidor normal
-module.exports = app;
 
 if (require.main === module) {
   const PORT = process.env.PORT || 3000;

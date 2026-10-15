@@ -163,7 +163,7 @@ const produtos = [
   }, '', false)
 ];
 
-// Fotos dos produtos (arquivos em public/img/). A chave é o nome exato do produto.
+// Fotos dos produtos
 const IMAGENS = {
   'Astro A10': '/img/astroA10.jpg',
   'Logitech Brio 100': '/img/brio100.jpg',

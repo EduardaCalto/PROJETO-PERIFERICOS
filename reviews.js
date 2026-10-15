@@ -1,16 +1,8 @@
-// Guarda os reviews no banco SEM mexer no resto do produto (specs, preço, etc.).
-// Para rodar:  node reviews.js
-// Pode rodar quantas vezes quiser: ele só atualiza os campos escritos aqui.
-//
-// A chave é o nome EXATO do produto, como está no banco.
-// Campos opcionais por produto:
-//   imagem: '/img/arquivo.png'   (coloque o arquivo em public/img/)
-require('dotenv').config();
 const mongoose = require('mongoose');
 const Produto = require('./models/Produto');
 
 const reviews = {
-  // ---------- Headsets ----------
+  //  Headsets 
   'Astro A10': {
     nota: 5.5,
     review: 'O headset oferece bastante conforto durante o uso, porém apresentou problemas recorrentes de mau contato nas conexões de áudio, o que prejudicou a experiência geral.'
@@ -26,7 +18,7 @@ const reviews = {
     review: 'Foi meu primeiro headset gamer e me acompanhou por bastante tempo. Parei de utilizá-lo porque o revestimento sintético começou a descascar, embora sua durabilidade geral tenha sido um ponto marcante da minha experiência.'
   },
 
-  // ---------- Mouses ----------
+  // Mouses 
   'Attack Shark X11': {
     nota: 10,
     review: 'É meu mouse atual, até o momento não apresentou problemas. Destaco a boa autonomia da bateria e o peso leve, que contribuem para uma experiência de uso muito satisfatória.'
@@ -47,14 +39,13 @@ const reviews = {
     review: 'Utilizei este mouse por muitos anos e ele nunca apresentou problemas de funcionamento. O único ponto negativo foi o revestimento, que acabou descascando com o tempo de uso.'
   },
 
-  // ---------- Teclados ----------
+  // Teclados 
   'Redragon Surara Pro': {
     nota: 7,
     review: 'Na época em que utilizei este teclado, ele apresentou problemas nos switches, o que acabou comprometendo a experiência de uso.'
   },
 
   'Gravastar K1 Lite': {
-    // Nota original: 100.000 (normalizada para 10/10)
     nota: 10,
     review: 'É um dos meus teclados favoritos. Gosto muito do conjunto do produto, até agora minha experiência com ele tem sido extremamente positiva.'
   },
@@ -64,8 +55,6 @@ const reviews = {
     review: 'Um excelente teclado para escritório e trabalho. Na minha experiência, é uma opção que atende muito bem às atividades de produtividade.'
   },
 
-  // O nome abaixo precisa ser igual ao do banco. Se você renomear o produto
-  // para "Royal Kludge R75" no seed.js, troque aqui também (e apague o antigo no Compass).
   'Royal Kludge 75%': {
     nota: 9,
     review: 'Um teclado que considero muito bom para jogos. Utilizo-o com frequência e gosto especialmente da sensação dos switches durante a digitação.'
@@ -76,7 +65,7 @@ const reviews = {
     review: 'Foi meu teclado por bastante tempo e, no geral, entregou uma boa experiência. O principal problema que encontrei foi a autonomia da bateria, que diminuía rapidamente.'
   },
 
-  // ---------- Webcams ----------
+  //  Webcams 
   'Logitech Brio 100': {
     nota: 8,
     review: 'Utilizei a webcam com frequência atendendo minhas necessidades. Entretanto, considero que existem alternativas com recursos superiores na mesma faixa de preço.'
@@ -92,7 +81,6 @@ const reviews = {
   try {
     await mongoose.connect(process.env.MONGODB_URI);
     for (const [nome, dados] of Object.entries(reviews)) {
-      // $unset limpa os antigos pontos positivos/negativos que ficaram salvos no banco
       const r = await Produto.updateOne(
         { nome },
         { $set: { ...dados, temReview: true }, $unset: { pontosPositivos: 1, pontosNegativos: 1 } },

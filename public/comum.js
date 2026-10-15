@@ -1,4 +1,4 @@
-// Rótulos e unidades de cada campo da ficha técnica (a ordem aqui define a ordem na tela)
+
 const CAMPOS = {
   dpiMax: ['DPI máx.', ''],
   pesoGramas: ['Peso', ' g'],
@@ -20,7 +20,7 @@ const CAMPOS = {
   campoVisaoGraus: ['Campo de visão', '°']
 };
 
-// Cria um elemento com texto (textContent evita injetar HTML)
+
 function criar(tag, classe, texto) {
   const el = document.createElement(tag);
   if (classe) el.className = classe;
@@ -38,15 +38,14 @@ function formatarValor(valor, unidade) {
   return `${valor}${unidade}`;
 }
 
-// Só aceita links http(s)
+
 function urlSegura(url) {
   return typeof url === 'string' && /^https?:\/\//i.test(url);
 }
 
 const NOME_CATEGORIA = { mouse: 'Mouse', teclado: 'Teclado', headset: 'Headset', webcam: 'Webcam' };
 
-// Espaço da foto do produto. Aceita '/img/arquivo.png' (pasta public/img) ou um link http(s).
-// Sem foto (ou se o arquivo não carregar), mostra as asas e o aviso "Foto em breve".
+
 function criarFoto(p, classe = 'foto') {
   const foto = criar('div', classe);
   foto.dataset.cat = p.categoria;

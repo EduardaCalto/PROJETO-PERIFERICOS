@@ -13,7 +13,7 @@ const estado = {
   produtos: [],
   categoria: 'todos',
   soReview: false,
-  selecionados: [] // ids dos produtos marcados para comparar
+  selecionados: [] 
 };
 
 const elFiltros = document.getElementById('filtros-categoria');
@@ -26,7 +26,7 @@ const elBarraLink = document.getElementById('barra-link');
 const elLimpar = document.getElementById('limpar');
 const elResumo = document.getElementById('resumo');
 
-// Fotos do setup (public/img). Se alguma não carregar, mostra o espaço reservado no lugar.
+
 document.querySelectorAll('.setup-foto').forEach((foto) => {
   const semFoto = () => {
     foto.replaceChildren(criar('span', 'foto-aviso', 'Foto em breve'));
@@ -77,7 +77,7 @@ function iniciarCarrossel(carrossel) {
 }
 document.querySelectorAll('.carrossel').forEach(iniciarCarrossel);
 
-// Números do topo: total, avaliados e categorias
+
 function renderizarResumo() {
   const avaliados = estado.produtos.filter((p) => p.temReview).length;
   const categorias = new Set(estado.produtos.map((p) => p.categoria)).size;
@@ -110,7 +110,6 @@ function criarCard(p) {
   const card = criar('article', 'card');
   card.dataset.cat = p.categoria;
 
-  // Espaço da foto, com categoria e nota por cima
   const foto = criarFoto(p);
   foto.appendChild(criar('span', 'tag tag-cat', NOME_CATEGORIA[p.categoria] || p.categoria));
   if (p.temReview && temValor(p.nota)) {
@@ -146,7 +145,7 @@ function criarCard(p) {
   rodape.appendChild(ver);
   corpo.appendChild(rodape);
 
-  // Caixa "Comparar"
+  // Caixa para comparação
   const rotulo = criar('label', 'comparar');
   const caixa = document.createElement('input');
   caixa.type = 'checkbox';
@@ -171,7 +170,7 @@ function alternarSelecao(id, marcado) {
   atualizarSelecao();
 }
 
-// Atualiza caixas e barra sem recriar os cards (mantém o foco do teclado)
+// Atualiza caixas e barra sem recriar os cards 
 function atualizarSelecao() {
   const categoria = categoriaSelecionada();
   const cheio = estado.selecionados.length >= MAX_COMPARAR;
